@@ -115,7 +115,7 @@ La sola impostazione della tipologia di verifica Rafforzata (2G) o Booster o Scu
 ```
 if ((TipologiaVerifica == "BOOSTER") OR (TipologiaVerifica == "RAFFORZATA") OR (TipologiaVerifica == "SCUOLA")) return CertificateStatus.NOT_VALID
     else {
-          if ((TipologiaVerifica == "LAVORO") && (età >= 50)) return CertificateStatus.NOT_VALID
+          if ((TipologiaVerifica == "LAVORO") AND (età >= 50)) return CertificateStatus.NOT_VALID
              else return CertificateStatus.EsitoVerificaBase(DGC-T)
     }
 ```
@@ -136,7 +136,7 @@ Solo l'impostazione delle tipologie di verifica Booster e Scuola può comportare
 if  (EsitoVerificaBase(DGC-R) == VALID) {
         if (TipologiaVerifica == "BOOSTER") return CertificateStatus.TEST_NEEDED
             else {
-                  if ((TipologiaVerifica == "SCUOLA") && (validità >= 120)) return CertificateStatus.NOT_VALID
+                  if ((TipologiaVerifica == "SCUOLA") AND (validità >= 120)) return CertificateStatus.NOT_VALID
 			          else return CertificateStatus.VALID
             }
 	}
@@ -217,7 +217,6 @@ if  (EsitoVerificaBase(DGC-V) == VALID) {
         else return CertificateStatus.NOT_VALID // dn<sd comporta NOT_VALID in Verifica Booster
     }
     else return CertificateStatus.VALID 
-	
 }
 ```
 
