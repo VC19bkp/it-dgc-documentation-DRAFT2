@@ -101,6 +101,14 @@ Questa è la tabella degli esiti possibili per i nuovi certificati CRT E (esenzi
 
 Solo l'impostazione della tipologia di verifica Booster può comportare override di esito rispetto alla tipologia di verifica Base.
 
+```
+if  (EsitoVerificaBase(CRT-E) == VALID) {
+        if (TipologiaVerifica == "BOOSTER") return CertificateStatus.TEST_NEEDED
+            else return CertificateStatus.VALID
+    }
+	else return CertificateStatus.NOT_VALID
+```
+
 ## Flussi Tampone
 
 Questa è la tabella degli esiti possibili per DGC T (tampone).
@@ -205,22 +213,22 @@ In base a questa tabella è possibile ricavare le condizioni di controllo, onde 
 
 ```
 if  (EsitoVerificaBase(DGC-V) == VALID) {
-    if ((TipologiaVerifica == "BOOSTER") OR (TipologiaVerifica == "SCUOLA")) {
-        if (dn >= sd)  {
-            if (MedicinalProduct == JOHNSON) {
-                if ((dn == sd) AND (dn < 2) AND (TipologiaVerifica == "BOOSTER")) return CertificateStatus.TEST_NEEDED
-                if ((dn == sd) AND (dn < 2) AND (TipologiaVerifica == "SCUOLA") AND (Attivo >= 120)) return CertificateStatus.NOT_VALID
-            } else {
-                if ((dn == sd) AND (dn < 3) AND (TipologiaVerifica == "BOOSTER")) return CertificateStatus.TEST_NEEDED // check altri mp
-                if ((dn == sd) AND (dn < 3) AND (TipologiaVerifica == "SCUOLA") AND (Attivo >= 120)) return CertificateStatus.NOT_VALID
-				
+        if ((TipologiaVerifica == "BOOSTER") OR (TipologiaVerifica == "SCUOLA")) {
+            if (dn >= sd) {
+                if (MedicinalProduct == JOHNSON) {
+                    if ((dn == sd) AND (dn < 2) AND (TipologiaVerifica == "BOOSTER")) return CertificateStatus.TEST_NEEDED
+                    if ((dn == sd) AND (dn < 2) AND (TipologiaVerifica == "SCUOLA") AND (Attivo >= 120)) return CertificateStatus.NOT_VALID
+                } else {
+                    if ((dn == sd) AND (dn < 3) AND (TipologiaVerifica == "BOOSTER")) return CertificateStatus.TEST_NEEDED // check altri mp
+                    if ((dn == sd) AND (dn < 3) AND (TipologiaVerifica == "SCUOLA") AND (Attivo >= 120)) return CertificateStatus.NOT_VALID
+                }
+                return CertificateStatus.VALID
             }
-            return CertificateStatus.VALID
+            else return CertificateStatus.NOT_VALID // dn<sd comporta NOT_VALID in Verifica Booster e Scuola
         }
-        else return CertificateStatus.NOT_VALID // dn<sd comporta NOT_VALID in Verifica Booster e Scuola
+        else return CertificateStatus.VALID 
     }
-    else return CertificateStatus.VALID 
-}
+    else return CertificateStatus.NOT_VALID
 ```
 
 Tale combinazione di condizioni di controllo consente quindi di validare correttamente tutte le combinazioni dn/sd - mp per DGC V... tranne una = **caso limite**.
