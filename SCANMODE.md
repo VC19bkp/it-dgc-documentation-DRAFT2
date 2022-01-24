@@ -70,7 +70,7 @@ Ne deriva la seguente tabella di riferimento per gli esiti di validazione in amb
 | TEST_NEEDED | Certificazione valida richiesto tampone                                       | GIALLO   |
 | VALID       | Certificazione valida                                                         | VERDE    |
 
-Nota : _ancora prevista la possibilità di restituire - pure in ambito produzione/release - l'esito `NOT_VALID_YET` **'Certificazione ancora non valida'**, qualora il KO validazione sia dovuto a controllo effettuato in data anteriore alla data d'inizio validità del certificato - definita nelle [Validation Rules](https://get.dgc.gov.it/v1/dgc/settings)._
+_**Nota :** ancora prevista la possibilità di restituire - pure in ambito produzione/release - l'esito `NOT_VALID_YET` **'Certificazione ancora non valida'**, qualora il KO validazione sia dovuto a controllo effettuato in data anteriore alla data d'inizio validità del certificato - definita nelle [Validation Rules](https://get.dgc.gov.it/v1/dgc/settings)._
 
 _Trattandosi comunque di un sottocaso di `NOT_VALID`, nei paragrafi successivi non verrà esplicitato._
 
