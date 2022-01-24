@@ -106,7 +106,7 @@ if  (EsitoVerificaBase(CRT-E) == VALID) {
         if (TipologiaVerifica == "BOOSTER") return CertificateStatus.TEST_NEEDED
             else return CertificateStatus.VALID
     }
-	else return CertificateStatus.NOT_VALID
+    else return CertificateStatus.NOT_VALID
 ```
 
 ## Flussi Tampone
