@@ -208,11 +208,14 @@ if  (EsitoVerificaBase(DGC-V) == VALID) {
     if ((TipologiaVerifica == "BOOSTER") OR (TipologiaVerifica == "SCUOLA")) {
         if (dn >= sd)  {
             if (MedicinalProduct == JOHNSON) {
-                if ((dn == sd) AND (dn < 2)) return CertificateStatus.TEST_NEEDED
+                if ((dn == sd) AND (dn < 2) AND (TipologiaVerifica == "BOOSTER")) return CertificateStatus.TEST_NEEDED
+                if ((dn == sd) AND (dn < 2) AND (TipologiaVerifica == "SCUOLA") AND (Attivo >= 120)) return CertificateStatus.NOT_VALID
             } else {
-                if ((dn == sd) AND (dn < 3)) return CertificateStatus.TEST_NEEDED // check altri mp
+                if ((dn == sd) AND (dn < 3) AND (TipologiaVerifica == "BOOSTER")) return CertificateStatus.TEST_NEEDED // check altri mp
+                if ((dn == sd) AND (dn < 3) AND (TipologiaVerifica == "SCUOLA") AND (Attivo >= 120)) return CertificateStatus.NOT_VALID
+				
             }
-            return CertificateStatus.VALID
+            if (dn > sd) return CertificateStatus.VALID
         }
         else return CertificateStatus.NOT_VALID // dn<sd comporta NOT_VALID in Verifica Booster e Scuola
     }
