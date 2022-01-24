@@ -28,21 +28,23 @@ Nelle sezioni successive sono pertanto riportati i tracciati dei flussi di valid
 
 Si riporta un breve elenco di alcuni acronimi e termini specifici utilizzati nel documento.
 
-| Termine              | Descrizione                                                                       |
-| -------------------- | --------------------------------------------------------------------------------- |
-| SDK                  | Software Development Kit                                                          |
-| DGC                  | Digital Green Certificate (in Italia conosciuto col nome di GreenPass)            |
-| DRL                  | DGC Revocation List                                                               |
-| Blacklist            | Lista di blocco                                                                   |
-| Validation Rules     | Regole nazionali di validazione dei GreenPass (tipologie certificati, durate, ..) |
-| UVCI                 | Unique Vaccination Certificate Identifier                                         |
-| dn                   | Dose Number (Numero della dose somministrata)                                     |
-| sd                   | Total Series of Doses (Totale dosi del ciclo / ciclo + richiami)                  |
-| mp                   | Medicinal Product (Codice prodotto vaccino)                                       |
-| co                   | Country of Vaccination/Test/Recovery (Nazione di vaccinazione/tampone/guarigione) |
-| 3G                   | Verifica BASE (Vaccinazione / Guarigione / Tampone)                               |
-| 2G                   | Verifica RAFFORZATA (Vaccinazione / Guarigione)                                   |
-| BOOSTER              | Verifica BOOSTER (Richiamo / Ciclo Completo + Tampone / Guarigione + Tampone)     |
+| Termine              | Descrizione                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| SDK                  | Software Development Kit                                                                       |
+| DGC                  | Digital Green Certificate (in Italia conosciuto col nome di GreenPass)                         |
+| DRL                  | DGC Revocation List                                                                            |
+| Blacklist            | Lista di blocco                                                                                |
+| Validation Rules     | Regole nazionali di validazione dei GreenPass (tipologie certificati, durate, ..)              |
+| UVCI                 | Unique Vaccination Certificate Identifier                                                      |
+| dn                   | Dose Number (Numero della dose somministrata)                                                  |
+| sd                   | Total Series of Doses (Totale dosi del ciclo / ciclo + richiami)                               |
+| mp                   | Medicinal Product (Codice prodotto vaccino)                                                    |
+| co                   | Country of Vaccination/Test/Recovery (Nazione di vaccinazione/tampone/guarigione)              |
+| 3G                   | Verifica BASE (Vaccinazione / Guarigione / Tampone / Esenzione)                                |
+| 2G                   | Verifica RAFFORZATA (Vaccinazione / Guarigione / Esenzione)                                    |
+| BOOSTER              | Verifica BOOSTER (Richiamo / Ciclo Vaccinale Completo o Guarigione o Esenzione + Tampone)      |
+| WORK                 | Verifica LAVORO (Vaccinazione / Guarigione / Tampone under 50 / Esenzione)                     |
+| SCHOOL               | Verifica SCUOLA (Richiamo / Ciclo Vaccinale Completo o Guarigione da meno di 120gg / Esenzione |
 
 ##  Panoramica
 
@@ -78,7 +80,7 @@ I vari scenari con i rispettivi flussi di validazione DGC sono rappresentati nel
 
 ![](img/image20B.png)
 
-Nei paragravi successivi vengono analizzati in dettaglio i flussi specifici & in funzione della tipologia DGC sottoposta a validazione.
+Nei paragrafi successivi vengono analizzati in dettaglio i flussi specifici & in funzione della tipologia DGC sottoposta a validazione.
 
 ## Flussi Tampone
 
@@ -223,7 +225,7 @@ Inoltre, gli Stati membri devono anche predisporre le procedure per revoca dei D
 
 Per quanto concerne l'Italia, il Ministero della Salute sta procedendo con le riemissioni dei DGC non conformi alle nuove regole, come risulta anche da segnalazioni pubbliche di utenti, che hanno già potuto scaricare i loro nuovi DGC tramite l'app Io.
 
-Infatti, è già stata inserita tra le [FAQ DGC](https://www.dgc.gov.it/web/faq.html) la nota di completamento emissioni dei nuovi DGC V Richiamo dn/sn 2/1 per tutti coloro, che avevano ricevuto il richiamo dopo vaccino Janseen (J&J) tra l'11 novembre e il 22 dicembre 2021. 
+Infatti, è già stata inserita tra le [FAQ DGC](https://www.dgc.gov.it/web/faq.html) la nota di completamento emissioni dei nuovi DGC V Richiamo dn/sd 2/1 per tutti coloro, che avevano ricevuto il richiamo dopo vaccino Janseen (J&J) tra l'11 novembre e il 22 dicembre 2021. 
 
 ------------------------
 
