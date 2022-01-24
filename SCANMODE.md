@@ -135,10 +135,10 @@ Solo l'impostazione delle tipologie di verifica Booster e Scuola può comportare
 ```
 if  (EsitoVerificaBase(DGC-R) == VALID) {
         if (TipologiaVerifica == "BOOSTER") return CertificateStatus.TEST_NEEDED
-			else {
+            else {
                   if ((TipologiaVerifica == "SCUOLA") && (validità >= 120)) return CertificateStatus.NOT_VALID
 			          else return CertificateStatus.VALID
-		    }
+            }
 	}
 	else return CertificateStatus.NOT_VALID
 ```
