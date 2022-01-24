@@ -239,6 +239,8 @@ Infatti, è già stata inserita tra le [FAQ DGC](https://www.dgc.gov.it/web/faq.
 
 - [Documentazione Digital Green Certificate Revocation List (DRL)](DRL.md)
 
+- [Documentazione Certificati Digitali di Esenzione Vaccinale](EXEMPTIONS.md)
+
 
 
 ------------------------
