@@ -215,7 +215,7 @@ if  (EsitoVerificaBase(DGC-V) == VALID) {
                 if ((dn == sd) AND (dn < 3) AND (TipologiaVerifica == "SCUOLA") AND (Attivo >= 120)) return CertificateStatus.NOT_VALID
 				
             }
-            if (dn > sd) return CertificateStatus.VALID
+            return CertificateStatus.VALID
         }
         else return CertificateStatus.NOT_VALID // dn<sd comporta NOT_VALID in Verifica Booster e Scuola
     }
