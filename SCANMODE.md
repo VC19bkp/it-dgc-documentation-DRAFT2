@@ -125,10 +125,10 @@ if ((TipologiaVerifica == "BOOSTER") OR (TipologiaVerifica == "RAFFORZATA") OR (
 Questa è la tabella degli esiti possibili per DGC R (guarigione).
 
 
-| Tipologia               | Condizione        | BASE              | RAFFORZATA        | BOOSTER                 | LAVORO            | SCUOLA            | 
-|-------------------------|-------------------|-------------------|-------------------|-------------------------|-------------------|-------------------|
-| R / R-PV (Post Vaccino) | Valido da < 120gg | VALID o NOT_VALID | VALID o NOT_VALID | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | VALID o NOT_VALID |
-| R / R-PV (Post Vaccino) | Valido da >=120gg | VALID o NOT_VALID | VALID o NOT_VALID | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | NOT_VALID         |
+| Tipologia | Condizione            | BASE              | RAFFORZATA        | BOOSTER                 | LAVORO            | SCUOLA            | 
+|-----------|-----------------------|-------------------|-------------------|-------------------------|-------------------|-------------------|
+| R / R-PV  | DGC Attivo da < 120gg | VALID o NOT_VALID | VALID o NOT_VALID | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | VALID o NOT_VALID |
+| R / R-PV  | DGC Attivo da >=120gg | VALID o NOT_VALID | VALID o NOT_VALID | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | NOT_VALID         |
 
 Solo l'impostazione delle tipologie di verifica Booster e Scuola può comportare override di esito rispetto alla tipologia di verifica Base.
 
@@ -164,13 +164,12 @@ Vengono semplicemente riconosciuti / distinti da quelli base, onde validarli cor
 
 Questa è la tabella degli esiti possibili per DGC V (vaccinazione).
 
-| Tipologia        | Condizione        | BASE              | RAFFORZATA         | BOOSTER                 | LAVORO            | SCUOLA            |
-|------------------|-------------------|-------------------|--------------------|-------------------------|-------------------|-------------------| 
-| V Parziale       | any               | VALID o NOT_VALID | VALID o NOT_VALID  | NOT_VALID               | VALID o NOT_VALID | NOT_VALID         |
-| V Ciclo Completo | Valido da < 120gg | VALID o NOT_VALID | VALID o NOT_VALID  | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | VALID o NOT_VALID |
-| V Ciclo Completo | Valido da >=120gg | VALID o NOT_VALID | VALID o NOT_VALID  | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | NOT_VALID         |
-| V Richiamo       | Valido da < 120gg | VALID o NOT_VALID | VALID o NOT_VALID  | VALID o NOT_VALID       | VALID o NOT_VALID | VALID o NOT_VALID |
-| V Richiamo       | Valido da >=120gg | VALID o NOT_VALID | VALID o NOT_VALID  | VALID o NOT_VALID       | VALID o NOT_VALID | NOT_VALID         |
+| Tipologia        | Condizione            | BASE              | RAFFORZATA         | BOOSTER                 | LAVORO            | SCUOLA            |
+|------------------|-----------------------|-------------------|--------------------|-------------------------|-------------------|-------------------| 
+| V Parziale       | any                   | VALID o NOT_VALID | VALID o NOT_VALID  | NOT_VALID               | VALID o NOT_VALID | NOT_VALID         |
+| V Ciclo Completo | DGC Attivo da < 120gg | VALID o NOT_VALID | VALID o NOT_VALID  | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | VALID o NOT_VALID |
+| V Ciclo Completo | DGC Attivo da >=120gg | VALID o NOT_VALID | VALID o NOT_VALID  | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | NOT_VALID         |
+| V Richiamo       | any                   | VALID o NOT_VALID | VALID o NOT_VALID  | VALID o NOT_VALID       | VALID o NOT_VALID | VALID o NOT_VALID |
 
 Rispetto ai flussi dei casi Tampone e Guarigione è evidente una maggior complessità di gestione per tipologia DGC V parziale / ciclo completo / richiamo.
 
