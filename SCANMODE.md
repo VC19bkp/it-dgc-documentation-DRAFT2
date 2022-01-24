@@ -94,16 +94,17 @@ Nei paragrafi successivi vengono analizzati in dettaglio i flussi specifici & in
 
 Questa è la tabella degli esiti possibili per DGC T (tampone).
 
-| Tipologia | Base              | Rafforzata | Booster   |
-|-----------|-------------------|------------|-----------|
-| T (any)   | VALID o NOT_VALID | NOT_VALID  | NOT_VALID |
+| Tipologia | Condizione    | BASE      | RAFFORZATA | BOOSTER     | LAVORO    | SCUOLA    | 
+|-----------|---------------|-----------|------------|-------------|-----------|-----------|
+| T (any)   | Età < 50 anni | VALID     | NOT_VALID  | NOT_VALID   | VALID     | NOT_VALID |
+| T (any)   | Età >=50 anni | VALID     | NOT_VALID  | NOT_VALID   | NOT_VALID | NOT_VALID |
 
-La sola impostazione della tipologia di verifica Rafforzata (2G) o Booster comporta infatti automaticamente l'esito di certificazione non valida. 
+La sola impostazione della tipologia di verifica Rafforzata (2G) o Booster o Scuola comporta infatti automaticamente l'esito di certificazione non valida. 
 
 ```
-if ((TipologiaVerifica == "BOOSTER") OR (TipologiaVerifica == "RAFFORZATA")) return CertificateStatus.NOT_VALID
-
-    else return CertificateStatus.EsitoVerificaBase(DGC-T)
+if ((TipologiaVerifica == "BOOSTER") OR (TipologiaVerifica == "RAFFORZATA") OR (TipologiaVerifica == "SCUOLA")) return CertificateStatus.NOT_VALID
+    else if ((TipologiaVerifica == "LAVORO") && (età >= 50)) return CertificateStatus.NOT_VALID
+             else return CertificateStatus.EsitoVerificaBase(DGC-T)
 ```
 
 ## Flussi Guarigione
