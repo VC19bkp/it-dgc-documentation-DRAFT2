@@ -95,9 +95,9 @@ Nei paragrafi successivi vengono analizzati in dettaglio i flussi specifici & in
 
 Questa è la tabella degli esiti possibili per i nuovi certificati CRT E (esenzione) - fuori schema DGC.
 
-| Tipologia | Condizione    | BASE              | RAFFORZATA        | BOOSTER                 | LAVORO            | SCUOLA            | 
-|-----------|---------------|-------------------|-------------------|-------------------------|-------------------|-------------------|
-| E (any)   | -             | VALID o NOT_VALID | VALID o NOT_VALID | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | VALID o NOT_VALID |
+| Tipologia | BASE              | RAFFORZATA        | BOOSTER                 | LAVORO            | SCUOLA            | 
+|-----------|-------------------|-------------------|-------------------------|-------------------|-------------------|
+| E (any)   | VALID o NOT_VALID | VALID o NOT_VALID | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | VALID o NOT_VALID |
 
 Solo l'impostazione della tipologia di verifica Booster può comportare override di esito rispetto alla tipologia di verifica Base.
 
