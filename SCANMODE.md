@@ -139,7 +139,7 @@ if  (EsitoVerificaBase(DGC-R) == VALID) {
                   if ((TipologiaVerifica == "SCUOLA") && (validità >= 120)) return CertificateStatus.NOT_VALID
 			          else return CertificateStatus.VALID
 		    }
-		}
+	}
 	else return CertificateStatus.NOT_VALID
 ```
 
