@@ -94,32 +94,39 @@ Nei paragrafi successivi vengono analizzati in dettaglio i flussi specifici & in
 
 Questa è la tabella degli esiti possibili per DGC T (tampone).
 
-| Tipologia | Condizione    | BASE      | RAFFORZATA | BOOSTER     | LAVORO    | SCUOLA    | 
-|-----------|---------------|-----------|------------|-------------|-----------|-----------|
-| T (any)   | Età < 50 anni | VALID     | NOT_VALID  | NOT_VALID   | VALID     | NOT_VALID |
-| T (any)   | Età >=50 anni | VALID     | NOT_VALID  | NOT_VALID   | NOT_VALID | NOT_VALID |
+| Tipologia | Condizione    | BASE              | RAFFORZATA | BOOSTER     | LAVORO            | SCUOLA    | 
+|-----------|---------------|-------------------|------------|-------------|-------------------|-----------|
+| T (any)   | Età < 50 anni | VALID o NOT_VALID | NOT_VALID  | NOT_VALID   | VALID o NOT_VALID | NOT_VALID |
+| T (any)   | Età >=50 anni | VALID o NOT_VALID | NOT_VALID  | NOT_VALID   | NOT_VALID         | NOT_VALID |
 
 La sola impostazione della tipologia di verifica Rafforzata (2G) o Booster o Scuola comporta infatti automaticamente l'esito di certificazione non valida. 
 
 ```
 if ((TipologiaVerifica == "BOOSTER") OR (TipologiaVerifica == "RAFFORZATA") OR (TipologiaVerifica == "SCUOLA")) return CertificateStatus.NOT_VALID
-    else if ((TipologiaVerifica == "LAVORO") && (età >= 50)) return CertificateStatus.NOT_VALID
+    else {
+	      if ((TipologiaVerifica == "LAVORO") && (età >= 50)) return CertificateStatus.NOT_VALID
              else return CertificateStatus.EsitoVerificaBase(DGC-T)
+         }
 ```
 
 ## Flussi Guarigione
 
 Questa è la tabella degli esiti possibili per DGC R (guarigione).
 
-| Tipologia | Base              | Rafforzata         | Booster                 |
-|-----------|-------------------|--------------------|-------------------------|
-| R (any)   | VALID o NOT_VALID | VALID o NOT_VALID  | TEST_NEEDED o NOT_VALID |
 
-Solo l'impostazione della tipologia di verifica Booster comporta un override di esito rispetto alla tipologia Base.
+| Tipologia               | Condizione        | BASE              | RAFFORZATA        | BOOSTER                 | LAVORO            | SCUOLA            | 
+|-------------------------|-------------------|-------------------|-------------------|-------------------------|-------------------|-------------------|
+| R / R-PV (Post Vaccino) | Valido da < 120gg | VALID o NOT_VALID | VALID o NOT_VALID | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | VALID o NOT_VALID |
+| R / R-PV (Post Vaccino) | Valido da >=120gg | VALID o NOT_VALID | VALID o NOT_VALID | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | NOT_VALID         |
+
+Solo l'impostazione delle tipologie di verifica Booster e Scuola comporta override di esito rispetto alla tipologia Base.
 
 ```
 if  (EsitoVerificaBase(DGC-R) == VALID) {
         if (TipologiaVerifica == "BOOSTER") return CertificateStatus.TEST_NEEDED
+			else return CertificateStatus.VALID
+			
+        if ((TipologiaVerifica == "SCUOLA") && (validità >= 120)) return CertificateStatus.NOT_VALID
 			else return CertificateStatus.VALID
 		}
 	else return CertificateStatus.NOT_VALID
