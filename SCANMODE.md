@@ -117,7 +117,7 @@ if ((TipologiaVerifica == "BOOSTER") OR (TipologiaVerifica == "RAFFORZATA") OR (
     else {
 	      if ((TipologiaVerifica == "LAVORO") && (età >= 50)) return CertificateStatus.NOT_VALID
              else return CertificateStatus.EsitoVerificaBase(DGC-T)
-         }
+    }
 ```
 
 ## Flussi Guarigione
