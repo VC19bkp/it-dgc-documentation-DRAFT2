@@ -8,6 +8,7 @@
   - [Panoramica](#panoramica)
 - [Scenari di Validazione](#scenari-di-validazione)
   - [Flusso Applicativo](#flusso-applicativo)
+  - [Flussi Esenzione](#flussi-esenzione)
   - [Flussi Tampone](#flussi-tampone)
   - [Flussi Guarigione](#flussi-guarigione)
   - [Flussi Vaccinazione](#flussi-vaccinazione)
@@ -90,6 +91,9 @@ I vari scenari con i rispettivi flussi di validazione DGC sono rappresentati nel
 
 Nei paragrafi successivi vengono analizzati in dettaglio i flussi specifici & in funzione della tipologia DGC sottoposta a validazione.
 
+## Flussi Esenzione
+
+
 ## Flussi Tampone
 
 Questa è la tabella degli esiti possibili per DGC T (tampone).
@@ -119,7 +123,7 @@ Questa è la tabella degli esiti possibili per DGC R (guarigione).
 | R / R-PV (Post Vaccino) | Valido da < 120gg | VALID o NOT_VALID | VALID o NOT_VALID | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | VALID o NOT_VALID |
 | R / R-PV (Post Vaccino) | Valido da >=120gg | VALID o NOT_VALID | VALID o NOT_VALID | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | NOT_VALID         |
 
-Solo l'impostazione delle tipologie di verifica Booster e Scuola comporta override di esito rispetto alla tipologia Base.
+Solo l'impostazione delle tipologie di verifica Booster e Scuola può comportare override di esito rispetto alla tipologia di verifica Base.
 
 ```
 if  (EsitoVerificaBase(DGC-R) == VALID) {
