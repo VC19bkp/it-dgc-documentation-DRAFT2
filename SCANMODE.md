@@ -151,7 +151,7 @@ Non vi è differenziazione di logica, sebbene contestualmente all'introduzione d
 >
 > Questa nuova Certificazione verde COVID-19 per guarigione post vaccinazione, valida per 9 mesi dalla data del certificato di guarigione, verrà emessa a partire dal 28 dicembre 2021.
 
-Per quanto riguarda la validazione in funzione della modalità impostata per tipologia di verifica, i DGC PV vengono gestiti alla stregua dei DGC base di guarigione con durata 180gg.
+Per quanto riguarda la validazione in funzione della modalità impostata per tipologia di verifica, i DGC R PV vengono gestiti alla stregua dei DGC base di guarigione con durata 180gg.
 
 Vengono semplicemente riconosciuti / distinti da quelli base, onde validarli correttamente in virtù della diversa scadenza, tramite il controllo delle entry `extendedKeyUsage` e della corrispondenza del campo CO = IT (_la diversa scadenza dei DGC R PV vale solo quelli emessi in Italia_) :
 
@@ -164,11 +164,13 @@ Vengono semplicemente riconosciuti / distinti da quelli base, onde validarli cor
 
 Questa è la tabella degli esiti possibili per DGC V (vaccinazione).
 
-| Tipologia        | Base              | Rafforzata         | Booster                 |
-|------------------|-------------------|--------------------|-------------------------|
-| V Parziale       | VALID o NOT_VALID | VALID o NOT_VALID  | NOT_VALID               |
-| V Ciclo Completo | VALID o NOT_VALID | VALID o NOT_VALID  | TEST_NEEDED o NOT_VALID |
-| V Richiamo       | VALID o NOT_VALID | VALID o NOT_VALID  | VALID o NOT_VALID       |
+| Tipologia        | Condizione        | BASE              | RAFFORZATA         | BOOSTER                 | LAVORO            | SCUOLA            |
+|------------------|-------------------|-------------------|--------------------|-------------------------|-------------------|-------------------| 
+| V Parziale       | any               | VALID o NOT_VALID | VALID o NOT_VALID  | NOT_VALID               | VALID o NOT_VALID | NOT_VALID         |
+| V Ciclo Completo | Valido da < 120gg | VALID o NOT_VALID | VALID o NOT_VALID  | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | VALID o NOT_VALID |
+| V Ciclo Completo | Valido da >=120gg | VALID o NOT_VALID | VALID o NOT_VALID  | TEST_NEEDED o NOT_VALID | VALID o NOT_VALID | NOT_VALID         |
+| V Richiamo       | Valido da < 120gg | VALID o NOT_VALID | VALID o NOT_VALID  | VALID o NOT_VALID       | VALID o NOT_VALID | VALID o NOT_VALID |
+| V Richiamo       | Valido da >=120gg | VALID o NOT_VALID | VALID o NOT_VALID  | VALID o NOT_VALID       | VALID o NOT_VALID | NOT_VALID         |
 
 Rispetto ai flussi dei casi Tampone e Guarigione è evidente una maggior complessità di gestione per tipologia DGC V parziale / ciclo completo / richiamo.
 
@@ -188,17 +190,17 @@ La condizione dn=sd NON è ancora sufficiente, onde distinguere correttamente DG
 
 La prima (mp) consente infatti di distinguere tra le vaccinazioni con ciclo base 2 dosi e quelle con ciclo monodose. In tal senso la condizione è agevole da implementare, essendovi un solo Medicinal Product monodose definito nelle Validation Rules = EU/1/20/1525 Jannsen - in Italia più noto con il nome Johnson&Johnson.
 
-Unitamente alla seconda condizione (dn) è possibile definire una tabella di riferimento per gli esiti DGC V in Tipologia di verifica Booster, che prevede esiti distinti di validità - a seconda che sia validato un DGC V Richiamo, piuttosto che un DGC V Ciclo Completo.
+Unitamente alla seconda condizione (dn) è possibile definire una tabella di riferimento per gli override esiti DGC V in Tipologia di verifica Booster e Scuola, che prevedono esiti distinti di validità - a seconda che sia validato un DGC V Richiamo, piuttosto che DGC V Ciclo Completo o Parziale.
 
-| dn/sd | Medicinal Product    | Vaccinazione   | Status      |
-|-------|----------------------|----------------|-------------|
-| 1/1   | JOHNSON              | Ciclo Completo | TEST_NEEDED |
-| 1/2   | any                  | Parziale       | NOT_VALID   |
-| 2/1   | any                  | Booster        | VALID       |
-| 2/2   | JOHNSON              | Booster        | VALID       | 
-| 2/2   | any tranne JOHNSON   | Ciclo Completo | TEST_NEEDED |
-| 3/2   | any                  | Booster        | VALID       |
-| 3/3   | any                  | Booster        | VALID       |
+| dn/sd | Medicinal Product    | Vaccinazione   | BOOSTER Status | SCUOLA Status                        |
+|-------|----------------------|----------------|----------------|--------------------------------------|
+| 1/1   | JOHNSON              | Ciclo Completo | TEST_NEEDED    | VALID (<120gg) o NOT_VALID (>=120gg) |
+| 1/2   | any                  | Parziale       | NOT_VALID      | NOT_VALID                            |
+| 2/1   | any                  | Booster        | VALID          | VALID (<120gg) o NOT_VALID (>=120gg) |
+| 2/2   | JOHNSON              | Booster        | VALID          | VALID (<120gg) o NOT_VALID (>=120gg) |
+| 2/2   | any tranne JOHNSON   | Ciclo Completo | TEST_NEEDED    | VALID (<120gg) o NOT_VALID (>=120gg) |
+| 3/2   | any                  | Booster        | VALID          | VALID (<120gg) o NOT_VALID (>=120gg) |
+| 3/3   | any                  | Booster        | VALID          | VALID (<120gg) o NOT_VALID (>=120gg) |
 
 In base a questa tabella è possibile ricavare le condizioni di controllo, onde distinguere in modo preciso le tipologie DGC V nella tipologia di verifica Booster.
 
