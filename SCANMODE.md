@@ -205,7 +205,7 @@ In base a questa tabella è possibile ricavare le condizioni di controllo, onde 
 
 ```
 if  (EsitoVerificaBase(DGC-V) == VALID) {
-    if (TipologiaVerifica == "BOOSTER") {
+    if ((TipologiaVerifica == "BOOSTER") OR (TipologiaVerifica == "SCUOLA")) {
         if (dn >= sd)  {
             if (MedicinalProduct == JOHNSON) {
                 if ((dn == sd) AND (dn < 2)) return CertificateStatus.TEST_NEEDED
@@ -214,7 +214,7 @@ if  (EsitoVerificaBase(DGC-V) == VALID) {
             }
             return CertificateStatus.VALID
         }
-        else return CertificateStatus.NOT_VALID // dn<sd comporta NOT_VALID in Verifica Booster
+        else return CertificateStatus.NOT_VALID // dn<sd comporta NOT_VALID in Verifica Booster e Scuola
     }
     else return CertificateStatus.VALID 
 }
