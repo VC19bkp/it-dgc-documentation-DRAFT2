@@ -190,17 +190,17 @@ La condizione dn=sd NON è ancora sufficiente, onde distinguere correttamente DG
 
 La prima (mp) consente infatti di distinguere tra le vaccinazioni con ciclo base 2 dosi e quelle con ciclo monodose. In tal senso la condizione è agevole da implementare, essendovi un solo Medicinal Product monodose definito nelle Validation Rules = EU/1/20/1525 Jannsen - in Italia più noto con il nome Johnson&Johnson.
 
-Unitamente alla seconda condizione (dn) è possibile definire una tabella di riferimento per gli override esiti in Tipologia di verifica Booster e Scuola di DGC V con esito Valid in condizioni di verifica Base.
+Unitamente alla seconda condizione (dn) è possibile definire una tabella di riferimento per gli override esiti in Tipologia di verifica Booster e Scuola di DGC V, che ottengano esito Valid in condizioni di verifica Base.
 
 | dn/sd | Medicinal Product    | Vaccinazione   | BOOSTER Status | SCUOLA Status                        |
 |-------|----------------------|----------------|----------------|--------------------------------------|
 | 1/1   | JOHNSON              | Ciclo Completo | TEST_NEEDED    | VALID (<120gg) o NOT_VALID (>=120gg) |
 | 1/2   | any                  | Parziale       | NOT_VALID      | NOT_VALID                            |
-| 2/1   | any                  | Booster        | VALID          | VALID (<120gg) o NOT_VALID (>=120gg) |
-| 2/2   | JOHNSON              | Booster        | VALID          | VALID (<120gg) o NOT_VALID (>=120gg) |
+| 2/1   | any                  | Booster        | VALID          | VALID                                |
+| 2/2   | JOHNSON              | Booster        | VALID          | VALID                                |
 | 2/2   | any tranne JOHNSON   | Ciclo Completo | TEST_NEEDED    | VALID (<120gg) o NOT_VALID (>=120gg) |
-| 3/2   | any                  | Booster        | VALID          | VALID (<120gg) o NOT_VALID (>=120gg) |
-| 3/3   | any                  | Booster        | VALID          | VALID (<120gg) o NOT_VALID (>=120gg) |
+| 3/2   | any                  | Booster        | VALID          | VALID                                |
+| 3/3   | any                  | Booster        | VALID          | VALID                                |
 
 In base a questa tabella è possibile ricavare le condizioni di controllo, onde distinguere in modo preciso le tipologie DGC V nella tipologia di verifica Booster.
 
