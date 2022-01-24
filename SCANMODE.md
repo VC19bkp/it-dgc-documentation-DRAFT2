@@ -135,10 +135,10 @@ Solo l'impostazione delle tipologie di verifica Booster e Scuola può comportare
 ```
 if  (EsitoVerificaBase(DGC-R) == VALID) {
         if (TipologiaVerifica == "BOOSTER") return CertificateStatus.TEST_NEEDED
-			else return CertificateStatus.VALID
-			
-        if ((TipologiaVerifica == "SCUOLA") && (validità >= 120)) return CertificateStatus.NOT_VALID
-			else return CertificateStatus.VALID
+			else {
+                  if ((TipologiaVerifica == "SCUOLA") && (validità >= 120)) return CertificateStatus.NOT_VALID
+			          else return CertificateStatus.VALID
+		    }
 		}
 	else return CertificateStatus.NOT_VALID
 ```
@@ -190,7 +190,7 @@ La condizione dn=sd NON è ancora sufficiente, onde distinguere correttamente DG
 
 La prima (mp) consente infatti di distinguere tra le vaccinazioni con ciclo base 2 dosi e quelle con ciclo monodose. In tal senso la condizione è agevole da implementare, essendovi un solo Medicinal Product monodose definito nelle Validation Rules = EU/1/20/1525 Jannsen - in Italia più noto con il nome Johnson&Johnson.
 
-Unitamente alla seconda condizione (dn) è possibile definire una tabella di riferimento per gli override esiti DGC V in Tipologia di verifica Booster e Scuola, che prevedono esiti distinti di validità - a seconda che sia validato un DGC V Richiamo, piuttosto che DGC V Ciclo Completo o Parziale.
+Unitamente alla seconda condizione (dn) è possibile definire una tabella di riferimento per gli override esiti in Tipologia di verifica Booster e Scuola di DGC V con esito Valid in condizioni di verifica Base.
 
 | dn/sd | Medicinal Product    | Vaccinazione   | BOOSTER Status | SCUOLA Status                        |
 |-------|----------------------|----------------|----------------|--------------------------------------|
@@ -218,6 +218,7 @@ if  (EsitoVerificaBase(DGC-V) == VALID) {
         else return CertificateStatus.NOT_VALID // dn<sd comporta NOT_VALID in Verifica Booster
     }
     else return CertificateStatus.VALID 
+	
 }
 ```
 
